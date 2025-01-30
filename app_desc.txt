@@ -39,7 +39,7 @@
     $Auth: 
         * The app will use hashing values to check if valid password, the app will use bcryptjs to hash the password at the frontend, and will compare it to the one in db 
             - no need for secret key
-        * The app will use JWT to validate if the user session time is valid, no need for cookies.
+        * The app will use JWT to validate if the user session time is valid.
 
 
 
