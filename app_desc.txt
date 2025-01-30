@@ -1,0 +1,45 @@
+# App summery:
+
+    Construct-List is a simple crud application where the user can create, delete, read and update construction items.
+    In the app you can view the items, sort, and group by them as needed.
+    You can also add items and of course delete/update exisiting items. 
+
+
+# Backend:
+    * NodeJS
+    * Typescript
+    * Express
+    * PostgreSQL
+    * Prisma
+    * Custom auth manger using JWT Encryption 
+    * dotenv
+    * jose (for JWT Encryption)
+
+# Frontend:
+    * React
+    * Typescript
+    * axios
+    * TailwindCSS 
+    * ShadeCN/UI  
+    * Redux
+    * bcryptjs
+    * i18n
+
+
+#Backend:
+
+    $The data:
+
+        * User - Made out of name, email, password(in hashing), default dates. 
+        * Item - name, catagory, userId, defualt dates and special deletedAt date for soft deletation.
+        * Log - for logging user operations as Delete, Create, Update. 
+
+        - The app also implement prisma middleware for soft Deletation and get query to not include deletedAt=true entities.
+
+    $Auth: 
+        * The app will use hashing values to check if valid password, the app will use bcryptjs to hash the password at the frontend, and will compare it to the one in db 
+            - no need for secret key
+        * The app will use JWT to validate if the user session time is valid, no need for cookies.
+
+
+
