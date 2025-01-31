@@ -21,5 +21,19 @@ export const itemsService = {
     return db.item.delete({
       where: { id }
     })
+  },
+  async getItem(id: string) {
+    return db.item.findUnique({
+      where: { id }
+    })
+  },
+
+  async getItems(userId?: string) {
+    return db.item.findMany({
+        where: {
+            userId: userId ? userId : '*'
+        }
+    })
   }
 }
+

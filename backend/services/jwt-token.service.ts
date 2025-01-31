@@ -1,7 +1,7 @@
 import * as jose from "jose";
-const secret = jose.base64url.decode(process.env.JWT_SECRET as string)
+const secret = jose.base64url.decode(process.env.JWT_TOKEN as string)
 
-export const generateJwtToken = async (item: string | object ): Promise<string> => {
+export async function generateJwtToken(item: string | object ): Promise<string> {
     try {
         const jwtEncrypted = await new jose.EncryptJWT({ item })
             .setProtectedHeader({ alg: 'dir', enc: 'A128CBC-HS256' })
@@ -17,7 +17,7 @@ export const generateJwtToken = async (item: string | object ): Promise<string> 
     }
 }
 
-export const validateJwtToken = async <T>(token: any): Promise<T> => {
+export async function validateJwtToken<T>(token: any): Promise<T> {
     try {
         const { payload } = await jose.jwtDecrypt(token, secret, {
             issuer: process.env.JWT_ISSUER,

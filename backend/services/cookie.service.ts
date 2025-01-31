@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-export const setCookie = (res: Response, name: string, data: any): void => {
+export function setCookie(res: Response, name: string, data: any): void {
     try {
         const halfAnHour = 30 * 60 * 1000; 
         res.cookie(name, JSON.stringify(data), { 
@@ -15,7 +15,7 @@ export const setCookie = (res: Response, name: string, data: any): void => {
     }
 };
 
-export const getCookie = (req: Request, name: string): string | boolean => {
+export function getCookie(req: Request, name: string): string | boolean {
     try {
         const cookie = req.cookies[name];
         if (cookie) {
@@ -29,7 +29,7 @@ export const getCookie = (req: Request, name: string): string | boolean => {
     }
 };
 
-export const clearCookie = (res: Response, name: string): void => {
+export function clearCookie(res: Response, name: string): void{
     try {
         res.clearCookie(name, { 
             secure: process.env.NODE_ENV === 'production',

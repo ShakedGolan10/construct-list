@@ -1,9 +1,4 @@
 import { Request } from "express";
-import { User } from "../../types/general.js";
-
-export interface AuthenticatedReq extends Request {
-    user: User
-}
 
 export interface LoginReq extends Request {
     body: LoginPayload

@@ -1,4 +1,9 @@
 import { Request } from "express";
+import { ParamsDictionary } from 'express-serve-static-core'
+
+export interface GetItemParams extends ParamsDictionary {
+    id: string
+}
 
 export interface CreateItemPayload {
     name: string;
@@ -15,14 +20,12 @@ export interface UpdateItemPayload {
     category?: string;
 }
 
-export interface UpdateItemReq extends Request {
-    body: UpdateItemPayload;
-}
+export interface CreateItemReq extends Request<{}, any, CreateItemPayload> {}
 
-export interface DeleteItemReq extends Request {
-    body: DeleteItemPayload;
-}
+export interface UpdateItemReq extends Request<{}, any, UpdateItemPayload> {}
 
-export interface CreateItemReq extends Request {
-    body: CreateItemPayload;
-}
+export interface DeleteItemReq extends Request<{}, any, DeleteItemPayload> {}
+
+export interface GetItemReq extends Request<GetItemParams> {}
+
+export interface GetItemsReq extends Request {}

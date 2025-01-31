@@ -1,9 +1,11 @@
-import { db } from '../../prisma/db.js'
-import { generateJwtToken } from '../../services/jwt-token.service.js'
+import { db } from '../../prisma/db'
+import { generateJwtToken } from '../../services/jwt-token.service'
 import bcrypt from 'bcryptjs'
-import { CreateUserPayload, LoginPayload } from './auth.types.js'
+import { CreateUserPayload, LoginPayload } from './auth.types'
 
-export async function loginUserService(payload: LoginPayload) {
+export const authService = {
+
+async loginUserService(payload: LoginPayload) {
   const user = await db.user.findUnique({ where: { email: payload.email } })
   if (!user) throw new Error('Invalid credentials')
 
@@ -11,10 +13,10 @@ export async function loginUserService(payload: LoginPayload) {
   if (!match) throw new Error('Invalid credentials')
 
   const token = generateJwtToken({fullname: user.fullname, id: user.id})
-  return token
-}
+  return {token, user}
+},
 
-export async function registerUserService(payload: CreateUserPayload) {
+async registerUserService(payload: CreateUserPayload) {
     const {fullname, email, password} = payload
   const user = await db.user.create({
     data: {
@@ -23,5 +25,7 @@ export async function registerUserService(payload: CreateUserPayload) {
         password
     }
   })
-  return user
+  const token = generateJwtToken({fullname: user.fullname, id: user.id})
+  return {token, user}
+}
 }
