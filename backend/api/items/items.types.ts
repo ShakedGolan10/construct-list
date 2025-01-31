@@ -1,28 +1,28 @@
 import { Request } from "express";
 
-interface _CreateItemPayload {
+export interface CreateItemPayload {
     name: string;
     category: string;
 }
 
-interface _DeleteItemPayload {
+export interface DeleteItemPayload {
     id: string;
 }
 
-interface _UpdateItemPayload {
+export interface UpdateItemPayload {
     id: string;
     name?: string;
     category?: string;
 }
 
 export interface UpdateItemReq extends Request {
-    body: _UpdateItemPayload;
+    body: UpdateItemPayload;
 }
 
 export interface DeleteItemReq extends Request {
-    body: _DeleteItemPayload;
+    body: DeleteItemPayload;
 }
 
 export interface CreateItemReq extends Request {
-    body: _CreateItemPayload;
+    body: CreateItemPayload;
 }
