@@ -1,4 +1,4 @@
-import { User } from "./general.d.ts";
+import { User } from "./general";
 
 declare global {
     namespace Express {

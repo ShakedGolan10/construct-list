@@ -6,20 +6,20 @@ export interface AuthenticatedReq extends Request {
 }
 
 export interface LoginReq extends Request {
-    body: _LoginPayload
+    body: LoginPayload
 }
 
 export interface CreateUserReq extends Request {
-    body: _CreateUserPayload
+    body: CreateUserPayload
 }
 
-interface _LoginPayload {
+export interface LoginPayload {
     email: string;
     password: string
 }
 
-interface _CreateUserPayload {
+export interface CreateUserPayload {
     email: string;
-    name: string;
+    fullname: string;
     password: string; // Hashed password
 }

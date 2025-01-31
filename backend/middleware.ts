@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { getCookie } from './services/cookie.service.js';
-import { validateJwtToken } from './services/jwt-token.service.js';
-import { User } from './types/general.js';
+import { getCookie } from './services/cookie.service';
+import { validateJwtToken } from './services/jwt-token.service';
+import { User } from './types/general';
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     try {
