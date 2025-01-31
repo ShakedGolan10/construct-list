@@ -13,7 +13,8 @@ export async function generateJwtToken(item: string | object ): Promise<string> 
 
         return jwtEncrypted
     } catch (error) {
-        throw new Error('token-service: Could\'nt generate JWT token')
+        console.log({error})
+        throw new Error(`token-service: Could\'nt generate JWT token ${error}`)
     }
 }
 
@@ -25,7 +26,7 @@ export async function validateJwtToken<T>(token: any): Promise<T> {
         })
         return payload.item as T
     } catch (error) {
-        throw new Error('token-service: Could\'nt validate JWT token')
+        throw new Error(`token-service: Could\'nt validate JWT token ${error}`)
 
     }
 }
