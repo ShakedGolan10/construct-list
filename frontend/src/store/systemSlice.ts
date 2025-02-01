@@ -8,12 +8,14 @@ interface ModalState {
 
 export interface SystemState {
   language: 'ltr' | 'rtl';
+  theme: 'autumn' | 'night'; 
   modal: ModalState;
   isLoading: boolean;
 }
 
 const initialState: SystemState = {
   language: 'rtl', 
+  theme: 'autumn', 
   modal: {
     isModalOpen: false,
     modalMsg: '',
@@ -29,6 +31,14 @@ const systemSlice = createSlice({
     setLanguage(state, action: PayloadAction<'ltr' | 'rtl'>) {
       state.language = action.payload;
     },
+    // Theme-related reducers:
+    setTheme(state, action: PayloadAction<'autumn' | 'night'>) {
+      state.theme = action.payload;
+    },
+    toggleTheme(state) {
+      state.theme = state.theme === 'autumn' ? 'night' : 'autumn';
+    },
+    // Modal reducers:
     openModal(state, action: PayloadAction<{ modalMsg: string; isError: boolean }>) {
       state.modal.isModalOpen = true;
       state.modal.modalMsg = action.payload.modalMsg;
@@ -39,11 +49,12 @@ const systemSlice = createSlice({
       state.modal.modalMsg = '';
       state.modal.isError = false;
     },
+    // Loading reducer:
     setLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
     },
   },
 });
 
-export const { setLanguage, openModal, closeModal, setLoading } = systemSlice.actions;
+export const { setLanguage, setTheme, toggleTheme, openModal, closeModal, setLoading } = systemSlice.actions;
 export default systemSlice.reducer;
