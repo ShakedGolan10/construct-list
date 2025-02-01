@@ -5,8 +5,6 @@ import { User } from './types/general'
 
 export async function authMiddleware(req: Request, res: Response, next: NextFunction) {
   try {
-    if (process.env.NODE_ENV !== 'production') 
-      return next()
     if (req.url.includes('auth') && req.method === 'POST') 
       return next()
     const token = getCookie(req, 'accessToken')

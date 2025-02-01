@@ -9,6 +9,9 @@ export interface CreateItemPayload {
     name: string;
     category: string;
 }
+export interface CreateManyItemPayload {
+    data: {name: string, category: string, userId: string}[]
+}
 
 export interface DeleteItemPayload {
     id: string;
@@ -19,6 +22,8 @@ export interface UpdateItemPayload {
     name?: string;
     category?: string;
 }
+
+export interface CreateItemsReq extends Request<{}, any, CreateManyItemPayload> {}
 
 export interface CreateItemReq extends Request<{}, any, CreateItemPayload> {}
 

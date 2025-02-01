@@ -1,10 +1,19 @@
 import { Response, Request } from 'express'
 import { itemsService } from './items.service'
-import { CreateItemReq, DeleteItemReq, UpdateItemReq, GetItemReq } from './items.types.js'
+import { CreateItemReq, DeleteItemReq, UpdateItemReq, GetItemReq, CreateItemsReq } from './items.types.js'
 
 export async function createItem(req: CreateItemReq, res: Response) {
   try {
     const item = await itemsService.createItem(req.body, req.user.id)
+    res.status(200).json(item)
+  } catch (err) {
+    console.log(err)
+    res.status(500).send(err)
+  }
+}
+export async function createItems(req: CreateItemsReq, res: Response) {
+  try {
+    const item = await itemsService.createItems(req.body)
     res.status(200).json(item)
   } catch (err) {
     res.status(500).send(err)
@@ -13,7 +22,7 @@ export async function createItem(req: CreateItemReq, res: Response) {
 
 export async function updateItem(req: UpdateItemReq, res: Response) {
   try {
-    const updated = await itemsService.updateItem(req.body, req.user.id)
+    const updated = await itemsService.updateItem(req.body)
     res.status(200).json(updated)
   } catch (err) {
     res.status(500).send(err)
@@ -22,7 +31,7 @@ export async function updateItem(req: UpdateItemReq, res: Response) {
 
 export async function deleteItem(req: DeleteItemReq, res: Response) {
   try {
-    const deleted = await itemsService.deleteItem(req.body.id, req.user.id)
+    const deleted = await itemsService.deleteItem(req.body.id)
     res.status(200).json(deleted)
   } catch (err) {
     res.status(500).send(err)

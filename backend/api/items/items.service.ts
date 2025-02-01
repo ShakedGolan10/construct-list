@@ -1,23 +1,27 @@
 import { db } from "../../prisma/db"
+import { CreateItemPayload, CreateManyItemPayload, UpdateItemPayload } from "./items.types"
 
 export const itemsService = {
-  async createItem(payload: { name: string, category: string }, userId?: string) {
+  async createItem(payload: CreateItemPayload, userId?: string) {
     if (!userId) throw new Error('No user')
     return db.item.create({
       data: { ...payload, userId }
     })
   },
+  async createItems(payload: CreateManyItemPayload) {
+    return db.item.createMany({
+      ...payload
+    })
+  },
 
-  async updateItem(payload: { id: string, name?: string, category?: string }, userId?: string) {
-    if (!userId) throw new Error('No user')
+  async updateItem(payload: UpdateItemPayload) {
     return db.item.update({
       where: { id: payload.id },
       data: { name: payload.name, category: payload.category }
     })
   },
 
-  async deleteItem(id: string, userId?: string) {
-    if (!userId) throw new Error('No user')
+  async deleteItem(id: string) {
     return db.item.delete({
       where: { id },
     }, )
