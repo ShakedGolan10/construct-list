@@ -10,6 +10,12 @@ export default {
 
     daisyui: {
         rtl: true,
-        // themes: ["light", "dark"],
+        themes: ["autumn", "night"],
+        darkTheme: "night",
+        base: true,
+        styled: true,
+        utils: true,
+        prefix: "",
+        themeRoot: ":root", // The element that receives theme color CSS variables
     },
 };
