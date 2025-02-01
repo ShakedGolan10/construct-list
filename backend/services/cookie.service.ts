@@ -10,8 +10,7 @@ export function setCookie(res: Response, name: string, data: any): void {
             sameSite: 'strict' 
         });
     } catch (error) {
-        console.error(error);
-        throw new Error("cookie-service: Couldn't set cookie");
+        throw new Error(`cookie-service: Couldn't set cookie ${error}`);
     }
 };
 
@@ -24,8 +23,7 @@ export function getCookie(req: Request, name: string): string | boolean {
             return false;
         }
     } catch (error) {
-        console.error(error);
-        throw new Error("cookie-service: Couldn't get cookie");
+        throw new Error(`cookie-service: Couldn't get cookie ${error}`);
     }
 };
 
@@ -37,7 +35,6 @@ export function clearCookie(res: Response, name: string): void{
             sameSite: 'strict' 
         });
     } catch (error) {
-        console.error(error);
-        throw new Error("cookie-service: Couldn't clear cookie");
+        throw new Error(`cookie-service: Couldn't clear cookie ${error}`);
     }
 };

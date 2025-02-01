@@ -29,6 +29,7 @@ export async function registerUser(req: CreateUserReq, res: Response) {
     setCookie(res,'accessToken', token)
     res.status(200).json({ user })
   } catch (err) {
+    console.log({err})
     res.status(400).json({ error: err })
   }
 }

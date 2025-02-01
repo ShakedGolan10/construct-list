@@ -19,8 +19,8 @@ export const itemsService = {
   async deleteItem(id: string, userId?: string) {
     if (!userId) throw new Error('No user')
     return db.item.delete({
-      where: { id }
-    })
+      where: { id },
+    }, )
   },
   async getItem(id: string) {
     return db.item.findUnique({

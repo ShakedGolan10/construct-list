@@ -13,7 +13,6 @@ export async function generateJwtToken(item: string | object ): Promise<string> 
 
         return jwtEncrypted
     } catch (error) {
-        console.log({error})
         throw new Error(`token-service: Could\'nt generate JWT token ${error}`)
     }
 }

@@ -16,7 +16,6 @@ export async function authMiddleware(req: Request, res: Response, next: NextFunc
     req.user = user
     return next()
   } catch (error) {
-    console.error('Authentication Error:', error)
     return res.status(401).json({ message: 'Unauthorized' })
   }
 }
