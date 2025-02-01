@@ -1,10 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-    safelist: [
-        'bg-base-100',
-        'text-base-content'
-    ],
     theme: {
         extend: {},
     },
@@ -20,3 +16,5 @@ module.exports = {
         themeRoot: ":root", // DaisyUI will attach theme variables to <html>
     },
 };
+
+export default config

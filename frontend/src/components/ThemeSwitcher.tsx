@@ -13,7 +13,7 @@ const ThemeSwitcher = () => {
 
   return (
     <button
-      className="btn btn-ghost"
+      className="btn btn-ghost absolute top-0 left-2/4"
       onClick={handleToggle}
       aria-label="Toggle Theme"
     >

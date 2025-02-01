@@ -15,7 +15,7 @@ export interface SystemState {
 
 const initialState: SystemState = {
   language: 'rtl', 
-  theme: 'autumn', 
+  theme: 'night', 
   modal: {
     isModalOpen: false,
     modalMsg: '',
