@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../store/systemSlice';
 import { RootState } from '../store/store';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 const ThemeSwitcher = () => {
   const dispatch = useDispatch();
@@ -12,23 +12,21 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <button
-      className="btn btn-ghost absolute top-0 left-2/4"
-      onClick={handleToggle}
-      aria-label="Toggle Theme"
-    >
-      {theme === 'autumn' ? (
-        <div className="flex items-center gap-2">
-          <SunIcon />
-          <span>Light Mode</span>
-        </div>
-      ) : (
-        <div className="flex items-center gap-2">
-          <MoonIcon />
-          <span>Dark Mode</span>
-        </div>
-      )}
-    </button>
+    <label className="flex cursor-pointer items-center gap-2 absolute top-0 left-2/4">
+      {/* Sun Icon (Light Mode) */}
+      <SunIcon className="w-6 h-6 text-yellow-500" />
+      
+      {/* Toggle Switch */}
+      <input
+        type="checkbox"
+        className="toggle theme-controller"
+        onChange={handleToggle}
+        checked={theme === "night"} // Checked when in dark mode
+      />
+      
+      {/* Moon Icon (Dark Mode) */}
+      <MoonIcon className="w-6 h-6 text-gray-500" />
+    </label>
   );
 };
 
