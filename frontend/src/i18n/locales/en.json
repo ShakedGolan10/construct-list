@@ -1,0 +1,10 @@
+{
+    "welcome": "Hello React!",
+    "user": {
+      "title": "User Management"
+    },
+    "items": {
+      "title": "Items List"
+    }
+  }
+  
