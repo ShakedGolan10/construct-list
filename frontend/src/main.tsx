@@ -5,7 +5,7 @@ import './index.css';
 import { Provider } from 'react-redux';
 
 import { store } from './store/store';
-import { RootLayout } from './layout/root-layout';
+import { RootLayout } from './layout/RootLayout';
 import { BrowserRouter } from 'react-router-dom';
 
 

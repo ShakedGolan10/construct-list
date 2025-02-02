@@ -2,7 +2,12 @@
 const config = {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
-        extend: {},
+        extend: {
+            screens: {
+                'tablet': { 'max': '1025px' },
+                'mobile': { 'max': '640px' },
+            },
+        },
     },
     plugins: [require("daisyui")],
     daisyui: {
@@ -14,6 +19,7 @@ const config = {
         utils: true,
         prefix: "",
         themeRoot: ":root", // DaisyUI will attach theme variables to <html>
+
     },
 };
 
