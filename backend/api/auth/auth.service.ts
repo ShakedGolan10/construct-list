@@ -17,6 +17,13 @@ export const authService = {
     const token = await generateJwtToken({ fullname: user.fullname, id: user.id })
     return { token, user }
   },
+  async getUser(payload: string) {
+    const user = await db.user.findUnique({ where: { id: payload } })
+    if (!user) throw new Error('Invalid - no user found')
+    delete user.password
+    const token = await generateJwtToken({ fullname: user.fullname, id: user.id })
+    return { token, user }
+  },
   async registerUser(payload: CreateUserPayload) {
     return withTransaction(async (tx) => {
       const user = await tx.user.create({
