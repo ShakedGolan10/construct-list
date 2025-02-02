@@ -59,7 +59,7 @@ const userSlice = createSlice({
         state.user.email = ""
       }
       state.authChecked = true
-    })
+    }),
     builder.addCase(checkAuth.rejected, (state, action) => {
       state.user.id = ""
       state.user.name = ""

@@ -4,6 +4,7 @@ import { useLanguageDir } from '../hooks/useLang'
 import { useTheme } from '../hooks/useTheme';
 import MainLayout from './LayoutWrapper';
 import MainNavbar from '../components/MainNavbar';
+import AuthWrapper from './AuthWrapper';
 
 export function RootLayout() {
     useLanguageDir()
@@ -13,6 +14,7 @@ export function RootLayout() {
    <>
      <MainNavbar />
       <MainLayout>
+      <AuthWrapper>
         <Routes>
           {routes.map((route) => (
             <Route
@@ -22,6 +24,7 @@ export function RootLayout() {
             />
           ))}
         </Routes>
+        </AuthWrapper>
       </MainLayout>
     </>           
 
