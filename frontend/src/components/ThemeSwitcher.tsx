@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../store/systemSlice';
 import { RootState } from '../store/store';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 
 const ThemeSwitcher = () => {
   const dispatch = useDispatch();
@@ -12,17 +12,17 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <label className="flex cursor-pointer items-center gap-2 absolute top-0 left-2/4">
-      <SunIcon className="w-6 h-6 text-yellow-500" />
+    <label className="swap swap-rotate cursor-pointer w-10">
       
       <input
         type="checkbox"
-        className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
+        className="theme-controller"
         onChange={handleToggle}
         checked={theme === "night"} 
       />
+      <MoonIcon className="swap-on h-10 w-10 fill-current" />
+      <SunIcon className="swap-off h-10 w-10 fill-current" />
       
-      <MoonIcon className="w-6 h-6 text-gray-500" />
     </label>
   );
 };

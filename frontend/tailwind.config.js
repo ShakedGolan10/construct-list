@@ -4,7 +4,7 @@ const config = {
     theme: {
         extend: {
             screens: {
-                'tablet': { 'max': '1025px' },
+                'tablet': { 'max': '900px' },
                 'mobile': { 'max': '640px' },
             },
         },

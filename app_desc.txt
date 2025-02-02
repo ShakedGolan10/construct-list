@@ -20,7 +20,7 @@
     * Typescript
     * axios
     * TailwindCSS 
-    * ShadeCN/UI  
+    * daisyUI  
     * Redux
     * bcryptjs
     * i18n
@@ -31,15 +31,37 @@
     $The data:
 
         * User - Made out of name, email, password(in hashing), default dates. 
-        * Item - name, catagory, userId, defualt dates and special deletedAt date for soft deletation.
+        * Item - name, catagory, userId, defualt dates.
         * Log - for logging user operations as Delete, Create, Update. 
 
-        - The app also implement prisma middleware for soft Deletation and get query to not include deletedAt=true entities.
-
+        * The server also have prisma trasaction wrapper, where if needed wrap the functions and abort trasactions.
     $Auth: 
-        * The app will use hashing values to check if valid password, the app will use bcryptjs to hash the password at the frontend, and will compare it to the one in db 
-            - no need for secret key
-        * The app will use JWT to validate if the user session time is valid.
+        * The app will use hashing values to check if valid password, the app will use bcryptjs to hash the password at register, and will compare it to the one on req.
+        * The app will use JWT to validate if the user session time is valid stored in cookie.
+        * The middleware will validate the JWT and adjust the user data to the req
 
+#Frontend: 
 
+    $Design:
+        
+        * App will use daisyUI themes: "night" and "authomn" that are replaced by setting an attribute on the html element and its managed globally using redux
+            and special hook.
+        * Main-layout is a grid, that handles as many elements in a row responsively - shrink and expand. each grid must take at least 250px or 1fr of available space
+            which insures elements responsivness.
+    $Redux: 
+
+        * System state in app's store will handle generic modal, language, and theme.
+        * Items state including delete, add, create and read.
+        * User state - user data including actions for login, logout and register.
+        
+    $i18n: 
+
+        * Handled with an index.ts file holding the configuration and points to json files as needed.
+        * hook and icon for replacing rtl to ltr are ready and used by an icon chaging and a redux reducer.
+        * The transalation would be performed by useTranslation hook that listens to changes in language made by the LangSwitcher cmp.
+
+    $User Handling:
+        * At userSlice - checking with redux thunk if a user is loggedIn, if so it navigates to main if not navigate to /
+        * The navigation will placed by an AuthWrapper that wrapps the main layout and prevents from acceccing the website without authorization 
+        
 

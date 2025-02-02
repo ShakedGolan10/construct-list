@@ -2,8 +2,8 @@ import { Routes, Route } from 'react-router-dom'
 import routes from '../routes'
 import { useLanguageDir } from '../hooks/useLang'
 import { useTheme } from '../hooks/useTheme';
-import ThemeSwitcher from '../components/ThemeSwitcher';
 import MainLayout from './LayoutWrapper';
+import MainNavbar from '../components/MainNavbar';
 
 export function RootLayout() {
     useLanguageDir()
@@ -11,7 +11,7 @@ export function RootLayout() {
 
   return (
    <>
-      <ThemeSwitcher />
+     <MainNavbar />
       <MainLayout>
         <Routes>
           {routes.map((route) => (
