@@ -13,18 +13,15 @@ const ThemeSwitcher = () => {
 
   return (
     <label className="flex cursor-pointer items-center gap-2 absolute top-0 left-2/4">
-      {/* Sun Icon (Light Mode) */}
       <SunIcon className="w-6 h-6 text-yellow-500" />
       
-      {/* Toggle Switch */}
       <input
         type="checkbox"
-        className="toggle theme-controller"
+        className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
         onChange={handleToggle}
-        checked={theme === "night"} // Checked when in dark mode
+        checked={theme === "night"} 
       />
       
-      {/* Moon Icon (Dark Mode) */}
       <MoonIcon className="w-6 h-6 text-gray-500" />
     </label>
   );
