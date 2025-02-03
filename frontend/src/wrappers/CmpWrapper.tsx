@@ -3,7 +3,7 @@ import { User } from '../types/app-types';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { useTranslation } from 'react-i18next';
-import SystemLoader from '../components/system/SystemLoader';
+import Loader from '../components/Loader';
 
 interface WrapperProps<T extends unknown[]> {
   dataPromises?: ((user: User) => Promise<T[number]>)[]; 
@@ -30,22 +30,20 @@ export default function CmpWrapper<T extends unknown[]>({
           Promise.all(promises)
               .then((result) => {
                 setData(result as T);
-                setLoading(false);
               })
               .catch((err) => {
-                setLoading(false);
                 setError(err);
-              }) 
+              }).finally(() => setLoading(false))
           } else setLoading(false)
       }
     }, [user]);
 
     if (loading) {
-      return <SystemLoader />;
+      return <Loader />;
     }
 
     if (error) {
-      return <p className='text-4xl font-bold text-center'>{t("page-error")}</p>;
+      return <p className='text-4xl font-bold text-center'>{t("error-page")}</p>;
     }
     
     if (!dataPromises && user || !data && user) {

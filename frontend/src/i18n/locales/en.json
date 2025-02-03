@@ -12,7 +12,7 @@
   "email-invalid": "Enter a valid email address.",
   "success": "Success!",
   "success-msg": "Your request was completed successfully!",
-  "page-error": "Sorry for the inconvenience, the page you requested is currently unavailable. Please try again later or refresh the page.",
+  "error-page": "Sorry for the inconvenience, the page you requested is currently unavailable. Please try again later or refresh the page.",
   "error-msg": "Something went wrong",
   "try-again": "Please try again or contact support.",
   "OK": "OK",

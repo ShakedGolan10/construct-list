@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { RootState } from "../../store/store";
 
-const SystemLoader = () => {
+const StoreLoader = () => {
   const isLoading = useSelector((state: RootState) => state.system.isLoading);
 
   if (!isLoading) return null;
@@ -14,5 +14,5 @@ const SystemLoader = () => {
     </div>
   );
 }
-export default SystemLoader
+export default StoreLoader
 

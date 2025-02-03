@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { checkAuth } from '../store/userSlice'
 import { AppDispatch, RootState } from '../store/store'
+import Loader from '../components/Loader'
 
 export default function AuthWrapper({ children }: { children: React.ReactNode }) {
   const dispatch = useDispatch<AppDispatch>()
@@ -16,15 +17,15 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
   useEffect(() => {
     if (authChecked) {
       if (user.id) {
-        navigate('/main', { replace: true })
+        navigate('/main')
       } else {
-        navigate('/', { replace: true })
+        navigate('/')
       }
     }
   }, [authChecked, user.id])
 
   if (!authChecked) {
-    return <div>Loading user...</div>
+    return <Loader />
   }
 
   return <>
