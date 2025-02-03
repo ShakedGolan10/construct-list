@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
-import LanguageSwitcher from './LangSwitcher'
-import ThemeSwitcher from './ThemeSwitcher'
 import LogoutBtn from './LogoutBtn'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store/store'
+import LanguageSwitcher from './system/LangSwitcher'
+import ThemeSwitcher from './system/ThemeSwitcher'
 
 export default function MainNavbar() {
   const [isOpen, setIsOpen] = useState(false)

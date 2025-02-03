@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleTheme } from '../store/systemSlice';
-import { RootState } from '../store/store';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
+import { RootState } from '../../store/store';
+import { toggleTheme } from '../../store/systemSlice';
 
 const ThemeSwitcher = () => {
   const dispatch = useDispatch();

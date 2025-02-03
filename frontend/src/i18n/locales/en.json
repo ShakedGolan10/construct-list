@@ -1,7 +1,7 @@
 {
   "login-page-title": "Welcome to the Authentication Page",
   "login-page-subtitle": "Please choose an option below to proceed",
-  "Login": "Login",
+  "login": "Login",
   "register": "Register",
   "email": "Email",
   "name": "Name",
@@ -12,7 +12,16 @@
   "email-invalid": "Enter a valid email address.",
   "success": "Success!",
   "success-msg": "Your request was completed successfully!",
+  "page-error": "Sorry for the inconvenience, the page you requested is currently unavailable. Please try again later or refresh the page.",
   "error-msg": "Something went wrong",
   "try-again": "Please try again or contact support.",
-  "OK": "OK"
+  "OK": "OK",
+  "main-page-header": "Item Management",
+  "create-item": "Create Item",
+  "edit": "Update",
+  "update-date": "Update Date",
+  "delete": "Delete",
+  "save": "Save",
+  "cancel": "Cancel",
+  "category": "Category"
 }

@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../store/store";
-import { closeModal } from "../store/systemSlice";
 import { useTranslation } from "react-i18next";
 import { XCircleIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
+import { closeModal } from "../../store/systemSlice";
+import { RootState } from "../../store/store";
 
 export default function SystemModal() {
   const { t } = useTranslation();

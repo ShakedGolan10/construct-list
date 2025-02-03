@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setLanguage } from '../store/systemSlice';
-import { RootState } from '../store/store';
 import { GlobeAltIcon, LanguageIcon } from '@heroicons/react/24/solid';
 import { useTranslation } from 'react-i18next';
+import { RootState } from '../../store/store';
+import { setLanguage } from '../../store/systemSlice';
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();

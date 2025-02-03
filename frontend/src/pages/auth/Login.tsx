@@ -82,7 +82,7 @@ export default function Login() {
         {errors.password && <span className="text-red-500 text-xs ">{t("password-invalid")}</span>}
 
       <button type="submit" className="btn btn-accent" disabled={isFormInvalid()}>
-        {t("Login")}
+        {t("login")}
       </button>
     </form>
   )

@@ -12,7 +12,7 @@ export default function AuthPage() {
       <p className="text-lg text-center text-gray-500">{t("login-page-subtitle")}</p>
       <div className="flex gap-6">
         <button className="btn btn-primary" onClick={() => setMode("login")}>
-          {t("Login")}
+          {t("login")}
         </button>
         <button className="btn btn-secondary" onClick={() => setMode("register")}>
           {t("register")}
