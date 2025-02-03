@@ -8,6 +8,7 @@ export interface GetItemParams extends ParamsDictionary {
 export interface CreateItemPayload {
     name: string;
     category: string;
+    image?: any
 }
 export interface CreateManyItemPayload {
     data: {name: string, category: string, userId: string}[]

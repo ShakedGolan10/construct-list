@@ -28,4 +28,15 @@
     }
   
    
-  
+    export interface CreateItemData {
+      name: string;
+      category: string;
+      image?: any
+  }
+
+    export interface UpdateItemData {
+      id: string
+      name?: string;
+      category?: string;
+      image?: any
+  }

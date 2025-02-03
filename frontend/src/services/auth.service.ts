@@ -7,12 +7,12 @@ export const isLoggedIn = async (): Promise<User> => {
 }
 
 export const login = async (creds: LoginCreds): Promise<User> => {
-   const user = await httpService.post<User>('auth/login', {...creds})
+   const user = await httpService.post<User>('auth/login', creds)
    if (!user) throw new Error('Couldnt login')
    return user
 }
 export const register = async (creds: RegisterCreds): Promise<User> => {
-   const user = await httpService.post<User>('auth/register', {...creds})
+   const user = await httpService.post<User>('auth/register', creds)
    if (!user) throw new Error('Couldnt register')
    return user
 }
