@@ -1,7 +1,18 @@
-export const isLoggedIn = (): Promise<{name: string, id: string, email: string}> => {
-    return new Promise((_resolve, reject) => {
-        setTimeout(() => {
-            reject('no!') // ✅ Now properly rejects after 2.5 seconds
-        }, 2500)
-    })
+import { LoginCreds, RegisterCreds, User } from "../types/app-types"
+import { httpService } from "./axios.service"
+
+export const isLoggedIn = async (): Promise<User> => {
+   const user = await httpService.get<User>('auth')
+   return user
+}
+
+export const login = async (creds: LoginCreds): Promise<User> => {
+   const user = await httpService.post<User>('auth/login', {...creds})
+   if (!user) throw new Error('Couldnt login')
+   return user
+}
+export const register = async (creds: RegisterCreds): Promise<User> => {
+   const user = await httpService.post<User>('auth/register', {...creds})
+   if (!user) throw new Error('Couldnt register')
+   return user
 }

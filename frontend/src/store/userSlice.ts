@@ -1,12 +1,9 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { isLoggedIn } from '../services/auth.service'
+import { User } from '../types/app-types'
 
 export interface UserState {
-  user: {
-    id: string
-    name: string
-    email: string
-  }
+  user: User
   authChecked: boolean
   error?: string
 }
@@ -14,7 +11,7 @@ export interface UserState {
 const initialState: UserState = {
   user:  {
     id: "",
-    name: "",
+    fullname: "",
     email: ""
   },
   authChecked: false,
@@ -38,12 +35,12 @@ const userSlice = createSlice({
   reducers: {
     setUser(state, action: PayloadAction<UserState>) {
       state.user.id = action.payload.user.id
-      state.user.name = action.payload.user.name
+      state.user.fullname = action.payload.user.fullname
       state.user.email = action.payload.user.email
     },
     clearUser(state) {
       state.user.id = ""
-      state.user.name = ""
+      state.user.fullname = ""
       state.user.email = ""
     },
   },
@@ -51,18 +48,18 @@ const userSlice = createSlice({
     builder.addCase(checkAuth.fulfilled, (state, action) => {
       if (action.payload && action.payload.id) {
         state.user.id = action.payload.id
-        state.user.name = action.payload.name
+        state.user.fullname = action.payload.fullname
         state.user.email = action.payload.email
       } else {
         state.user.id = ""
-        state.user.name = ""
+        state.user.fullname = ""
         state.user.email = ""
       }
       state.authChecked = true
     }),
     builder.addCase(checkAuth.rejected, (state, action) => {
       state.user.id = ""
-      state.user.name = ""
+      state.user.fullname = ""
       state.user.email = ""
       state.authChecked = true
       state.error = action.payload as string
