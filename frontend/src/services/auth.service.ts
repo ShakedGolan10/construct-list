@@ -16,3 +16,12 @@ export const register = async (creds: RegisterCreds): Promise<User> => {
    if (!user) throw new Error('Couldnt register')
    return user
 }
+
+export const logout = async (): Promise<void> => {
+    try {
+        await httpService.post<User>('auth/logout')
+    } catch (error) {
+        return 
+    }
+   
+}

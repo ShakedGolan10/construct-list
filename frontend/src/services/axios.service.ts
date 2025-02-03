@@ -14,7 +14,7 @@ export const httpService = {
   get<T>(endpoint: string, params?: Record<string, any>, query?: Record<string, any>): Promise<T> {
     return ajax<T>(endpoint, 'GET', params, query)
   },
-  post<T>(endpoint: string, data: any): Promise<T> {
+  post<T>(endpoint: string, data?: any): Promise<T> {
     return ajax<T>(endpoint, 'POST', data)
   },
   put<T>(endpoint: string, data: any): Promise<T> {
