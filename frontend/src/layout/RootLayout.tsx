@@ -5,6 +5,8 @@ import { useTheme } from '../hooks/useTheme';
 import MainLayout from './LayoutWrapper';
 import MainNavbar from '../components/MainNavbar';
 import AuthWrapper from './AuthWrapper';
+import SystemModal from '../components/SystemModal';
+import SystemLoader from '../components/SystemLoader';
 
 export function RootLayout() {
     useLanguageDir()
@@ -15,6 +17,8 @@ export function RootLayout() {
      <MainNavbar />
       <MainLayout>
       <AuthWrapper>
+        <SystemLoader />
+        <SystemModal />
         <Routes>
           {routes.map((route) => (
             <Route

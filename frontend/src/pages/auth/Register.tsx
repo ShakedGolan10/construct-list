@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { setUser } from '../../store/userSlice'
 import { useNavigate } from 'react-router-dom'
 import { register } from '../../services/auth.service'
+import { useAsync } from '../../hooks/useAsync'
 
 export default function Register() {
   const { t } = useTranslation()
@@ -14,7 +15,7 @@ export default function Register() {
   const validateName = (val: string) => val.trim().length >= 2
   const validateEmail = (val: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
   const validatePassword = (val: string) => val.length >= 6 && /[a-zA-Z]/.test(val)
-
+  const {executeAuthFunction} = useAsync()
 
   const handleBlur = (field: keyof typeof formData) => {
     setErrors(prev => ({
@@ -50,7 +51,11 @@ export default function Register() {
         return
     }
     delete formData.file
-    const user = await register(formData)
+
+    const user = await executeAuthFunction({
+      asyncOperation: () => register(formData)
+    })
+     
     dispatch(setUser({ user, authChecked: false }))
     navigate('/main')
   }

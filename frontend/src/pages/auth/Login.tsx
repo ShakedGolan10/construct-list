@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { setUser } from '../../store/userSlice'
 import { login } from '../../services/auth.service'
 import { useNavigate } from 'react-router-dom'
+import { useAsync } from '../../hooks/useAsync'
 
 export default function Login() {
   const { t } = useTranslation()
@@ -11,7 +12,7 @@ export default function Login() {
   const [creds, setCreds] = useState({ email: "", password: "" })
   const [errors, setErrors] = useState<{ email?: boolean; password?: boolean }>({})
   const navigate = useNavigate()
-
+  const {executeAuthFunction} = useAsync()
   const validateEmail = (val: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
   const validatePassword = (val: string) => val.length >= 6 && /[a-zA-Z]/.test(val)
 
@@ -45,7 +46,9 @@ export default function Login() {
         setErrors(newErrors)
         return
     }
-    const user = await login(creds)
+    const user = await executeAuthFunction({
+      asyncOperation: () => login(creds),
+    })
     dispatch(setUser({ user: {...user}, authChecked: false }))
     navigate('/main')
   }

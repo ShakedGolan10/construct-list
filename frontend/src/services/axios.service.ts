@@ -44,7 +44,6 @@ async function ajax<T>(
     if (err.response?.status === 401) {
       sessionStorage.clear()
     }
-    console.error('HTTP Error:', err)
     throw err
   }
 }

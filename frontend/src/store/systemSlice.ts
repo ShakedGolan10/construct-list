@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ModalState {
   isModalOpen: boolean;
-  modalMsg: string;
-  isError: boolean;
+  successMsg: string;
+  errorMsg: string;
 }
 
 export interface SystemState {
@@ -18,8 +18,8 @@ const initialState: SystemState = {
   theme: 'night', 
   modal: {
     isModalOpen: false,
-    modalMsg: '',
-    isError: false,
+    successMsg: '',
+    errorMsg: '',
   },
   isLoading: false,
 };
@@ -31,25 +31,22 @@ const systemSlice = createSlice({
     setLanguage(state, action: PayloadAction<'ltr' | 'rtl'>) {
       state.language = action.payload;
     },
-    // Theme-related reducers:
     setTheme(state, action: PayloadAction<'autumn' | 'night'>) {
       state.theme = action.payload;
     },
     toggleTheme(state) {
       state.theme = state.theme === 'autumn' ? 'night' : 'autumn';
     },
-    // Modal reducers:
-    openModal(state, action: PayloadAction<{ modalMsg: string; isError: boolean }>) {
+    openModal(state, action: PayloadAction<{ successMsg?: string; errorMsg?: string }>) {
       state.modal.isModalOpen = true;
-      state.modal.modalMsg = action.payload.modalMsg;
-      state.modal.isError = action.payload.isError;
+      state.modal.successMsg = action.payload.successMsg || '';
+      state.modal.errorMsg = action.payload.errorMsg || '';
     },
     closeModal(state) {
       state.modal.isModalOpen = false;
-      state.modal.modalMsg = '';
-      state.modal.isError = false;
+      state.modal.successMsg = '';
+      state.modal.errorMsg = '';
     },
-    // Loading reducer:
     setLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
     },

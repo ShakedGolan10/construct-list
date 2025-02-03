@@ -9,5 +9,10 @@
   "image": "Upload Image",
   "password-invalid": "Password must be at least 6 characters long and contain at least one letter.",
   "name-invalid": "Name must be at least 2 characters long.",
-  "email-invalid": "Enter a valid email address."
+  "email-invalid": "Enter a valid email address.",
+  "success": "Success!",
+  "success-msg": "Your request was completed successfully!",
+  "error-msg": "Something went wrong",
+  "try-again": "Please try again or contact support.",
+  "OK": "OK"
 }
