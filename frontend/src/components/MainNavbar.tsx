@@ -10,7 +10,7 @@ export default function MainNavbar() {
   const [isOpen, setIsOpen] = useState(false)
   const {user} = useSelector((state: RootState) => state.user);
   return (
-    <nav className="flex items-center justify-between px-6 py-4 sticky top-0 bg-base-100 tablet:relative">
+    <nav className="flex items-center justify-between px-6 py-4 top-0 bg-base-100 fixed w-full">
       <div className="font-bold text-xl">Logo</div>
       <div className="flex items-center gap-4 tablet:hidden">
         <LanguageSwitcher />

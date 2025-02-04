@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import routes from '../routes'
 import { useLanguageDir } from '../hooks/useLang'
 import { useTheme } from '../hooks/useTheme';
-import MainLayout from './LayoutWrapper';
+import LayoutWrapper from './LayoutWrapper';
 import MainNavbar from '../components/MainNavbar';
 import AuthWrapper from '../wrappers/AuthWrapper';
 import SystemModal from '../components/system/SystemModal';
@@ -15,7 +15,7 @@ export function RootLayout() {
   return (
    <>
      <MainNavbar />
-      <MainLayout>
+      <LayoutWrapper>
       <AuthWrapper>
         <StoreLoader />
         <SystemModal />
@@ -29,7 +29,7 @@ export function RootLayout() {
           ))}
         </Routes>
         </AuthWrapper>
-      </MainLayout>
+      </LayoutWrapper>
     </>           
 
   )
