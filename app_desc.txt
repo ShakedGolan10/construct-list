@@ -46,8 +46,8 @@
         
         * App will use daisyUI themes: "night" and "authomn" that are replaced by setting an attribute on the html element and its managed globally using redux
             and special hook.
-        * Main-layout is a grid, that handles as many elements in a row responsively - shrink and expand. each grid must take at least 250px or 1fr of available space
-            which insures elements responsivness.
+        * Main-layout is a grid, that handles 3 elements total - 2 are empty spaces shrinking relativitly to the screen size, and 1 is the main content, on the middle.
+    
     $Redux: 
 
         * System state in app's store will handle generic modal, language, and theme.
@@ -60,8 +60,8 @@
         * hook and icon for replacing rtl to ltr are ready and used by an icon chaging and a redux reducer.
         * The transalation would be performed by useTranslation hook that listens to changes in language made by the LangSwitcher cmp.
 
-    $User Handling:
-        * At userSlice - checking with redux thunk if a user is loggedIn, if so it navigates to main if not navigate to /
-        * The navigation will placed by an AuthWrapper that wrapps the main layout and prevents from acceccing the website without authorization 
+    $User-Handling:
+        * At userSlice - checking with redux thunk if a user is loggedIn, initiate the thunk action on the AuthWrapper
+        * AuthWrapper will handle the navigation and will navigate to main and / accordingly to checkAuth resolved statues.
         
 

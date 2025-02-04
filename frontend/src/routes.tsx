@@ -1,7 +1,7 @@
 import AuthPage from "./pages/auth/AuthPage"
+import MainPage from "./pages/main/MainPage"
 
 const routes = [
-
     {
         path: '/',
         component: <AuthPage />,
@@ -9,7 +9,7 @@ const routes = [
     },
     {
         path: '/main',
-        component: <div />, 
+        component: <MainPage />, 
         label: 'main-page'
     },
    

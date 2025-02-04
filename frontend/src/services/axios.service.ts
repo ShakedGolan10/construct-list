@@ -33,9 +33,9 @@ async function ajax<T>(
 ): Promise<T> {
   try {
     const config: AxiosRequestConfig = {
-      url: `${BASE_URL}${endpoint}${((method === 'GET' || method === 'DELETE') && data) ? `/${data}` : ''}`,
+      url: `${BASE_URL}${endpoint}${((method === 'GET') && data) ? `/${data}` : ''}`,
       method,
-      data: (method === 'POST' || method === 'PUT') ? data : undefined,
+      data: (method !== 'GET') ? data : undefined,
       params: method === 'GET' ? query : undefined,
     }
     const res: AxiosResponse<T> = await axiosInstance(config)

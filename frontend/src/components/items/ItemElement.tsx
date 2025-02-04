@@ -1,7 +1,13 @@
 import { useTranslation } from "react-i18next";
 import { Item } from "../../types/app-types";
 
-export default function ItemElement({ item, onEdit }: { item: Item; onEdit: () => void }) {
+
+interface ItemElementProps {
+  item: Item;
+  onEdit: () => void;
+  onDelete: () => void;
+}
+export default function ItemElement({ item, onEdit, onDelete }: ItemElementProps) {
   const {t} = useTranslation()
   return (
     <tr className="hover:bg-base-200">
@@ -9,8 +15,13 @@ export default function ItemElement({ item, onEdit }: { item: Item; onEdit: () =
       <td>{item.category}</td>
       <td>{new Date(item.updatedAt).toLocaleDateString()}</td>
       <td>
-        <button className="btn btn-sm btn-primary" onClick={onEdit}>
+        <button className="btn btn-sm btn-success" onClick={onEdit}>
           {t("edit")}
+        </button>
+      </td>
+      <td>
+        <button className="btn btn-sm btn-error" onClick={onDelete}>
+          {t("delete")}
         </button>
       </td>
     </tr>
