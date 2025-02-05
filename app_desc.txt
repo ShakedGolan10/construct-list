@@ -1,4 +1,4 @@
-# App summery:
+# App summary:
 
     Construct-List is a simple crud application where the user can create, delete, read and update construction items.
     In the app you can view the items, sort, and group by them as needed.
