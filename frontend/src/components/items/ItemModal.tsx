@@ -1,40 +1,29 @@
 import { useState } from 'react'
-import { XMarkIcon } from '@heroicons/react/24/solid'
 import { useTranslation } from 'react-i18next'
 import { Item } from '../../types/app-types';
+import Modal from '../system/Modal';
 
 interface ItemModalProps {
-  mode: "create" | "edit";
   item?: Item;
   onClose: () => void;
-  createItem: (newItemData: Partial<Item>) => Promise<void>;
-  updateItem: (updatedItem: Item) => Promise<void>;
+  handleSave: (itemData: Partial<Item>) => Promise<void>;
 }
 
-export default function ItemModal({ mode, item, onClose, createItem, updateItem }: ItemModalProps) {
+export default function ItemModal({ item, onClose, handleSave }: ItemModalProps) {
   const { t } = useTranslation()
   const [formData, setFormData] = useState({
-    name: mode === "edit" && item ? item.name : "",
-    category: mode === "edit" && item ? item.category : ""
+    name: item ? item.name : "",
+    category: item ? item.category : ""
   })
 
-  const handleSave = async () => {
-    if (mode === "create") await createItem({ name: formData.name, category: formData.category })
-    else {
-      const updated = { ...item!, name: formData.name, category: formData.category }
-      await updateItem(updated)
-    }
+  const handleSaveFunc = async () => {
+    await handleSave({...item,...formData})
     onClose()
   }
 
   return (
-    <div className="fixed inset-0 z-[110] flex items-center justify-center backdrop-blur-md bg-black/50" onClick={onClose}>
-      <div className="relative bg-base-100 p-6 rounded shadow-lg" onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
-          <XMarkIcon className="w-6 h-6" />
-        </button>
-          <>
-            <div className="flex flex-col gap-4">
+    <Modal onClose={onClose} isOpen={undefined}>
+              <h1 className='text-xl font-bold'>{item ? t("update-item") : t("create-item")}</h1>
               <label className="flex flex-col">
                 <span>{t("name")}</span>
                 <input 
@@ -53,13 +42,10 @@ export default function ItemModal({ mode, item, onClose, createItem, updateItem 
                   onChange={e => setFormData({ ...formData, category: e.target.value })}
                 />
               </label>
-            </div>
             <div className="flex justify-center gap-4 mt-4">
-              <button className="btn btn-primary" onClick={handleSave}>{t("save")}</button>
+              <button className="btn btn-primary" onClick={handleSaveFunc}>{t("save")}</button>
               <button className="btn btn-secondary" onClick={onClose}>{t("cancel")}</button>
             </div>
-          </>
-      </div>
-    </div>
+        </Modal>
   )
 }
