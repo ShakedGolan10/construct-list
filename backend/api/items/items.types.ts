@@ -1,27 +1,27 @@
-import { Request } from "express";
-import { ParamsDictionary } from 'express-serve-static-core'
+import { Request } from 'express';
+import { ParamsDictionary } from 'express-serve-static-core';
 
 export interface GetItemParams extends ParamsDictionary {
-    id: string
+  id: string;
 }
 
 export interface CreateItemPayload {
-    name: string;
-    category: string;
-    image?: any
+  name: string;
+  category: string;
+  image?: any;
 }
 export interface CreateManyItemPayload {
-    data: {name: string, category: string, userId: string}[]
+  data: { name: string; category: string; userId: string }[];
 }
 
 export interface DeleteItemPayload {
-    id: string;
+  id: string;
 }
 
 export interface UpdateItemPayload {
-    id: string;
-    name?: string;
-    category?: string;
+  id: string;
+  name?: string;
+  category?: string;
 }
 
 export interface CreateItemsReq extends Request<{}, any, CreateManyItemPayload> {}

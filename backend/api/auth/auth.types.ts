@@ -1,20 +1,20 @@
-import { Request } from "express";
+import { Request } from 'express';
 
 export interface LoginReq extends Request {
-    body: LoginPayload
+  body: LoginPayload;
 }
 
 export interface CreateUserReq extends Request {
-    body: CreateUserPayload
+  body: CreateUserPayload;
 }
 
 export interface LoginPayload {
-    email: string;
-    password: string
+  email: string;
+  password: string;
 }
 
 export interface CreateUserPayload {
-    email: string;
-    fullname: string;
-    password: string; // Hashed password
+  email: string;
+  fullname: string;
+  password: string; // Hashed password
 }
