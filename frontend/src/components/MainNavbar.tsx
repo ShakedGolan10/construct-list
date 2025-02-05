@@ -21,10 +21,12 @@ export default function MainNavbar() {
         <Bars3Icon className="w-6 h-6" />
       </button>
       {isOpen && (
-        <div onClick={() => setIsOpen(false)} className="tablet:fixed tablet:inset-0 tablet:bg-black/40 tablet:backdrop-blur-sm z-50">
-            <div
-            onClick={(e) => e.stopPropagation()}
-            className="tablet:relative">
+        <div onClick={() => setIsOpen(false)} className="fixed inset-0 backdrop-blur-md z-[999]">
+          <div
+            className="absolute inset-0 bg-black bg-opacity-40"
+            onClick={() => setIsOpen(false)}
+            />
+            <div className='relative'>
                 <button onClick={() => setIsOpen(false)} className="absolute top-0 right-4">
                 <XMarkIcon className="w-10 h-10" />
                 </button>
