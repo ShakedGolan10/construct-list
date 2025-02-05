@@ -25,6 +25,8 @@ export const authService = {
   },
   async registerUser(payload: CreateUserPayload) {
     return withTransaction(async (tx) => {
+      console.log('checking the env:', process.env.SALT_HASH)
+      console.log('checking the payload:', payload)
       const user = await tx.user.create({
         data: {
           fullname: payload.fullname,
