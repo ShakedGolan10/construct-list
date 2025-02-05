@@ -18,10 +18,15 @@
   "OK": "OK",
   "main-page-header": "Item Management",
   "create-item": "Create Item",
+  "update-item": "Update Item",
   "edit": "Update",
   "update-date": "Update Date",
   "delete": "Delete",
   "save": "Save",
   "cancel": "Cancel",
-  "category": "Category"
+  "category": "Category",
+  "filter-name": "Filter by category",
+  "filter-category": "Filter by name",
+  "no-info": "There isnt any relevent data",
+  "actions": "Actions"
 }

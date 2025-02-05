@@ -54,7 +54,7 @@ export default function Login() {
   }
 
   return (
-    <form className="flex flex-col gap-4 min-w-[340px]" onSubmit={onSubmit}>
+    <form className="flex flex-col gap-4 min-w-[300px]" onSubmit={onSubmit}>
       <label className="flex flex-col">
         <span>{t("email")}</span>
         <input

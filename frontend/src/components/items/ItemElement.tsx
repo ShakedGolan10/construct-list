@@ -10,16 +10,14 @@ interface ItemElementProps {
 export default function ItemElement({ item, onEdit, onDelete }: ItemElementProps) {
   const {t} = useTranslation()
   return (
-    <tr className="hover:bg-base-200">
+    <tr>
       <td>{item.name}</td>
       <td>{item.category}</td>
       <td>{new Date(item.updatedAt).toLocaleDateString()}</td>
-      <td>
+      <td className="flex gap-2">
         <button className="btn btn-sm btn-success" onClick={onEdit}>
           {t("edit")}
         </button>
-      </td>
-      <td>
         <button className="btn btn-sm btn-error" onClick={onDelete}>
           {t("delete")}
         </button>

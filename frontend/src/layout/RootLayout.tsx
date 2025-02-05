@@ -17,8 +17,8 @@ export function RootLayout() {
      <MainNavbar />
       <LayoutWrapper>
       <AuthWrapper>
+      <SystemModal />
         <StoreLoader />
-        <SystemModal />
         <Routes>
           {routes.map((route) => (
             <Route

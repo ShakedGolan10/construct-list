@@ -9,7 +9,7 @@ import { useAsync } from '../../hooks/useAsync'
 export default function Register() {
   const { t } = useTranslation()
   const dispatch = useDispatch()
-  const [formData, setFormData] = useState<{ fullname: string, email: string, password: string, file?: File | null }>({ fullname: "", email: "", password: "", file: null as File | null })
+  const [formData, setFormData] = useState<{ fullname: string, email: string, password: string }>({ fullname: "", email: "", password: ""})
   const [errors, setErrors] = useState<{ fullname?: boolean; email?: boolean; password?: boolean }>({})
   const navigate = useNavigate()
   const validateName = (val: string) => val.trim().length >= 2
@@ -34,7 +34,7 @@ export default function Register() {
     !!errors.email || !!errors.fullname || !!errors.password ||
     !formData.email.trim() || !formData.fullname.trim() || !formData.password.trim();
 
-  const handleChange = (field: keyof typeof formData, value: string | File | null) => {
+  const handleChange = (field: keyof typeof formData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
 
@@ -50,18 +50,17 @@ export default function Register() {
         setErrors(newErrors)
         return
     }
-    delete formData.file
 
     const user = await executeAuthFunction({
       asyncOperation: () => register(formData)
     })
      
-    dispatch(setUser({ user, authChecked: false }))
+    dispatch(setUser({ user, authChecked: true }))
     navigate('/main')
   }
 
   return (
-    <form className="flex flex-col gap-4 min-w-[340px]" onSubmit={onSubmit}>
+    <form className="flex flex-col gap-4 min-w-[300px]" onSubmit={onSubmit}>
       
         <label className="flex flex-col">
           <span>{t("name")}</span>
@@ -100,16 +99,6 @@ export default function Register() {
           />
         </label>
         {errors.password && <span className="text-red-500 text-xs ">{t("password-invalid")}</span>}
-
-      <label className="flex flex-col">
-        <span>{t("image")}</span>
-        <input
-          className="file-input file-input-bordered"
-          type="file"
-          onChange={e => handleChange('file', e.target.files?.[0] || null)}
-        />
-      </label>
-
       <button
         type="submit"
         disabled={isFormInvalid()}

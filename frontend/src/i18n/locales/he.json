@@ -18,10 +18,15 @@
   "OK": "אישור",
   "main-page-header": "ניהול פריטים",
   "create-item": "צור פריט",
+  "update-item": "עדכן פריט",
   "edit": "עדכן",
   "update-date": "תאריך עדכון",
   "delete": "מחק",
   "category": "קטגוריה",
   "save": "שמור",
-  "cancel": "ביטול"
+  "cancel": "ביטול",
+  "filter-name": "חפש לפי שם",
+  "filter-category": "חפש לפי קטגוריה",
+  "no-info": "אין מידע רלוונטי זמין",
+  "actions": "פעולות"
 }
