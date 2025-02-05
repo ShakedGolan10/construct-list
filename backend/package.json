@@ -6,8 +6,9 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "tsc --watch & nodemon dist/server.js",
-    "format": "prettier --write ."
+    "dev": "tsc --watch && npm run build &&  nodemon dist/server.js",
+    "format": "prettier --write .",
+    "start:prod": "set NODE_ENV=production && npm run build && npm run start"
   },
   "author": "Me",
   "license": "ISC",
