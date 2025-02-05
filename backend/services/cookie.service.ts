@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 
 export function setCookie(res: Response, name: string, data: any): void {
-    try {
         const halfAnHour = 30 * 60 * 1000; 
         res.cookie(name, JSON.stringify(data), { 
             expires: new Date(Date.now() + halfAnHour),
@@ -9,32 +8,17 @@ export function setCookie(res: Response, name: string, data: any): void {
             httpOnly: true, 
             sameSite: 'strict' 
         });
-    } catch (error) {
-        throw new Error(`cookie-service: Couldn't set cookie ${error}`);
-    }
 };
 
-export function getCookie(req: Request, name: string): string | boolean {
-    try {
+export function getCookie(req: Request, name: string): string  {
         const cookie = req.cookies[name];
-        if (cookie) {
-            return JSON.parse(cookie);
-        } else {
-            return false;
-        }
-    } catch (error) {
-        throw new Error(`cookie-service: Couldn't get cookie ${error}`);
-    }
+        if (cookie) return JSON.parse(cookie);
 };
 
-export function clearCookie(res: Response, name: string): void{
-    try {
+export function clearCookie(res: Response, name: string) {
         res.clearCookie(name, { 
             secure: process.env.NODE_ENV === 'production',
             httpOnly: true, 
             sameSite: 'strict' 
         });
-    } catch (error) {
-        throw new Error(`cookie-service: Couldn't clear cookie ${error}`);
-    }
 };
