@@ -3,7 +3,6 @@ import Axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 const BASE_URL: string = process.env.NODE_ENV === 'production' ? '/api/' : '//localhost:3000/api/';
 
 const axiosInstance = Axios.create({
-  baseURL: BASE_URL,
   withCredentials: true,
 });
 

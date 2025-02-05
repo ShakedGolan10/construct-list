@@ -17,11 +17,11 @@ const server = http.createServer(app);
 app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
+const publicPath = path.join(__dirname, 'public');
 
-if (process.env.NODE_ENV === 'production') {
-  const publicPath = path.join(process.cwd(), 'public');
-  app.use(express.static(publicPath));
-} else {
+app.use(express.static(publicPath));
+
+if (process.env.NODE_ENV !== 'production') {
   const corsOptions = {
     origin: ['http://127.0.0.1:3000', 'http://localhost:3000', 'http://localhost:5173'],
     credentials: true,
@@ -34,10 +34,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/items', itemsRoutes);
 
 const serveFrontend: RequestHandler = (req, res) => {
-  const publicPath = path.join(process.cwd(), 'public', 'index.html');
-
-  if (fs.existsSync(publicPath)) {
-    res.sendFile(publicPath);
+  const htmlFile = path.join(publicPath, 'index.html');
+  if (fs.existsSync(htmlFile)) {
+    res.sendFile(htmlFile);
   } else {
     res.status(200).json({ message: `Server is live at port ${port}!` });
   }
@@ -48,3 +47,4 @@ const port = process.env.PORT || 3000;
 server.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
+

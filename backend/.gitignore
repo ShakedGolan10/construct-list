@@ -17,7 +17,7 @@ yarn-error.log*
 .env
 
 # Build 
-/dist
+
 
 # typescript
 *.tsbuildinfo
