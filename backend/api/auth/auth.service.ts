@@ -27,16 +27,22 @@ export const authService = {
     return withTransaction(async (tx) => {
       console.log('checking the env:', process.env.SALT_HASH)
       console.log('checking the payload:', payload)
-      const user = await tx.user.create({
-        data: {
-          fullname: payload.fullname,
-          email: payload.email,
-          password: bcrypt.hashSync(payload.password, Number(process.env.SALT_HASH)),
-        },
-      });
-      delete user.password;
-      const token = await generateJwtToken({ fullname: user.fullname, id: user.id });
-      return { token, user };
+      try {
+        const user = await tx.user.create({
+          data: {
+            fullname: payload.fullname,
+            email: payload.email,
+            password: bcrypt.hashSync(payload.password, Number(process.env.SALT_HASH)),
+          },
+        });
+        delete user.password;
+        const token = await generateJwtToken({ fullname: user.fullname, id: user.id });
+        return { token, user };  
+      } catch (error) {
+        console.log('The error is:', error)
+        throw error
+      }
+      
     });
   },
 };
