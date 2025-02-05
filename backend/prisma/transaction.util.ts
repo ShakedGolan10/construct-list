@@ -9,7 +9,7 @@ export async function withTransaction<T>(
       async (txClient) => {
         return operation(txClient);
       },
-      { timeout: 30000 }
+      { timeout: 14500 }
     );
   } catch (error) {
     throw new Error(`Database transaction failed: ${error}`);
