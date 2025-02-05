@@ -1,4 +1,3 @@
-
 const Loader = () => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-transparent">
@@ -7,6 +6,5 @@ const Loader = () => {
       </div>
     </div>
   );
-}
-export default Loader
-
+};
+export default Loader;

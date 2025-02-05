@@ -1,6 +1,5 @@
-import { useTranslation } from "react-i18next";
-import { Item } from "../../types/app-types";
-
+import { useTranslation } from 'react-i18next';
+import { Item } from '../../types/app-types';
 
 interface ItemElementProps {
   item: Item;
@@ -8,7 +7,7 @@ interface ItemElementProps {
   onDelete: () => void;
 }
 export default function ItemElement({ item, onEdit, onDelete }: ItemElementProps) {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   return (
     <tr>
       <td>{item.name}</td>
@@ -16,12 +15,12 @@ export default function ItemElement({ item, onEdit, onDelete }: ItemElementProps
       <td>{new Date(item.updatedAt).toLocaleDateString()}</td>
       <td className="flex gap-2">
         <button className="btn btn-sm btn-success" onClick={onEdit}>
-          {t("edit")}
+          {t('edit')}
         </button>
         <button className="btn btn-sm btn-error" onClick={onDelete}>
-          {t("delete")}
+          {t('delete')}
         </button>
       </td>
     </tr>
-  )
+  );
 }

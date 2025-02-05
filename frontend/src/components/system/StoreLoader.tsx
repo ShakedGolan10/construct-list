@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 const StoreLoader = () => {
   const isLoading = useSelector((state: RootState) => state.system.isLoading);
@@ -13,6 +13,5 @@ const StoreLoader = () => {
       </div>
     </div>
   );
-}
-export default StoreLoader
-
+};
+export default StoreLoader;

@@ -13,16 +13,14 @@ const ThemeSwitcher = () => {
 
   return (
     <label className="swap swap-rotate cursor-pointer w-10">
-      
       <input
         type="checkbox"
         className="theme-controller"
         onChange={handleToggle}
-        checked={theme === "night"} 
+        checked={theme === 'night'}
       />
       <MoonIcon className="swap-on h-10 w-10 fill-current" />
       <SunIcon className="swap-off h-10 w-10 fill-current" />
-      
     </label>
   );
 };

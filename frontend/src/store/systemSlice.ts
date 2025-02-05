@@ -8,14 +8,14 @@ interface ModalState {
 
 export interface SystemState {
   language: 'ltr' | 'rtl';
-  theme: 'autumn' | 'night'; 
+  theme: 'autumn' | 'night';
   modal: ModalState;
   isLoading: boolean;
 }
 
 const initialState: SystemState = {
-  language: 'rtl', 
-  theme: 'night', 
+  language: 'rtl',
+  theme: 'night',
   modal: {
     isModalOpen: false,
     successMsg: '',
@@ -53,5 +53,6 @@ const systemSlice = createSlice({
   },
 });
 
-export const { setLanguage, setTheme, toggleTheme, openModal, closeModal, setLoading } = systemSlice.actions;
+export const { setLanguage, setTheme, toggleTheme, openModal, closeModal, setLoading } =
+  systemSlice.actions;
 export default systemSlice.reducer;

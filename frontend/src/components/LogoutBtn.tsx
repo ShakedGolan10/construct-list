@@ -6,18 +6,18 @@ import { useNavigate } from 'react-router-dom';
 
 const LogoutBtn = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+
   const logoutUser = async () => {
-    await logout()
-    dispatch(clearUser())
-    navigate('/')
+    await logout();
+    dispatch(clearUser());
+    navigate('/');
   };
 
   return (
-    <button className='btn-ghost'>
+    <button className="btn-ghost">
       <ArrowLeftStartOnRectangleIcon onClick={logoutUser} className="h-10 w-10" />
-      </button>
+    </button>
   );
 };
 

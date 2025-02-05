@@ -21,11 +21,7 @@ const LanguageSwitcher = () => {
 
   return (
     <label className="swap swap-rotate cursor-pointer w-10">
-      <input 
-        type="checkbox"
-        onChange={handleToggle}
-        checked={language === 'rtl'}
-      />
+      <input type="checkbox" onChange={handleToggle} checked={language === 'rtl'} />
       <GlobeAltIcon className="swap-off h-10 w-10 fill-current" />
       <LanguageIcon className="swap-on h-10 w-10 fill-current" />
     </label>

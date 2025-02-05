@@ -1,7 +1,7 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
 interface MainLayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default function MainLayout({ children }: MainLayoutProps) {
@@ -16,5 +16,5 @@ export default function MainLayout({ children }: MainLayoutProps) {
       <div className="col-span-1">{children}</div> {/* Content */}
       <div className="col-span-1"></div> {/* Right spacing */}
     </main>
-  )
+  );
 }
