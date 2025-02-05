@@ -29,7 +29,7 @@ exports.authService = {
         return { token, user };
     },
     async registerUser(payload) {
-        const hashedPass = await bcrypt_1.default.hash(payload.password, Number(process.env.SALT_HASH));
+        const hashedPass = bcrypt_1.default.hashSync(payload.password, Number(process.env.SALT_HASH));
         return (0, transaction_util_1.withTransaction)(async (tx) => {
             const user = await tx.user.create({
                 data: {
