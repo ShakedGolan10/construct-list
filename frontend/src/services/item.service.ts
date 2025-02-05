@@ -21,7 +21,7 @@ export const deleteItem = async (data: {id: string}): Promise<Item> => {
 }
 
 export const updateItem = async (data: UpdateItemData): Promise<Item> => {
-   const updatedItem = await httpService.put<Item>('items/single', data)
+   const updatedItem = await httpService.put<Item>('items', data)
    return updatedItem
 }
 
